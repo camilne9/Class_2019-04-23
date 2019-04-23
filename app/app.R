@@ -32,7 +32,8 @@ ui <- fluidPage(
       ),
     
     mainPanel(
-      textOutput("selected_var")
+      textOutput("selected_var"),
+      textOutput("selected_var2")
     )
   )
   )
@@ -41,7 +42,10 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   output$selected_var <- renderText({ 
-    "You have selected this"
+    paste("You have selected", input$var)
+  })
+  output$selected_var2 <- renderText({ 
+    paste("You have chosen a range that goes from", input$range[1], "to", input$range[2])
   })
   
 }
